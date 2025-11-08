@@ -33,7 +33,6 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Desktop Logo - FIXED: Use Typography directly with AppLink as component */}
           <RestaurantIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"

@@ -5,8 +5,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/slice/cartSlice";
+import type { RootState } from "../store/store";
+import notification from "./Notification";
 
 interface Props {
   id?: number;
@@ -20,6 +22,8 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+
   const handleCardClick = () => {
     if (id && price) {
       navigate(`/food/${id}`);
@@ -29,6 +33,11 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
+
+    if (!isAuthenticated){
+      navigate('/signin')
+    }
+
     e.stopPropagation();
     if (id && price) {
       dispatch(
@@ -37,11 +46,12 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
           name: itemName || "",
           image: imageUrl?.split("/").pop()?.replace(".png", "") || "",
           price,
-          category: "", // You may need to pass this as a prop
+          category: "",
           restaurant: { name: restaurantName || "", image: "" },
         } as any)
       );
     }
+   notification(`${itemName} Added to Cart`)
   };
 
   return (
@@ -55,13 +65,7 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
       }}
       onClick={handleCardClick}
     >
-      <CardMedia
-        sx={{ borderRadius: 5 }}
-        component="img"
-        alt={itemName || restaurantName}
-        height="140"
-        image={imageUrl || "/foodImages/foodplaceholder.png"}
-      />
+      <CardMedia sx={{ borderRadius: 5 }} component="img" alt={itemName || restaurantName} height="140" image={imageUrl || "/foodImages/foodplaceholder.png"} />
       <CardContent>
         <Typography gutterBottom variant="h6" sx={{ textWrap: "nowrap" }}>
           {itemName || restaurantName}
@@ -74,13 +78,7 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
           </Typography>
         )}
         {price && (
-          <Fab
-            color="secondary"
-            aria-label="add"
-            variant="extended"
-            sx={{ textWrap: "nowrap", fontSize: "12px" }}
-            onClick={handleAddToCart}
-          >
+          <Fab color="secondary" aria-label="add" variant="extended" sx={{ textWrap: "nowrap", fontSize: "12px" }} onClick={handleAddToCart}>
             Add To Cart
           </Fab>
         )}

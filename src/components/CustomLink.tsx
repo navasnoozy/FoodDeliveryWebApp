@@ -19,7 +19,7 @@ const AppLink = forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref) => {
       sx={{
         textDecorationColor: "inherit",
         "&:hover": { textDecorationColor: "inherit" },
-        ...sx, // ✅ allows overriding or setting color
+        ...sx,
       }}
       {...muiProps}
     />

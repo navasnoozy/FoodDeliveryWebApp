@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { motion, stagger } from "motion/react";
 
 const BannerHeading = ({ text }: { text: string }) => {
-  // Split text into words for staggered animation
   const words = text.split(" ");
 
   return (
@@ -19,7 +18,6 @@ const BannerHeading = ({ text }: { text: string }) => {
           },
         },
       }}
-      // Add subtle continuous breathing animation
       whileInView={{
         scale: [1, 1.02, 1],
       }}
@@ -55,7 +53,6 @@ const BannerHeading = ({ text }: { text: string }) => {
               },
             },
           }}
-          // Add continuous subtle float for each word
           animate={{
             y: [0, -5, 0],
           }}
@@ -84,7 +81,6 @@ const BannerHeading = ({ text }: { text: string }) => {
               lineHeight: 1.2,
               display: "inline-block",
               position: "relative",
-              // Add subtle shimmer effect
               "&::after": {
                 content: '""',
                 position: "absolute",

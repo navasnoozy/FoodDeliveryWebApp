@@ -42,7 +42,7 @@ const SwiperBanner = () => {
         navigation={true}
         loop={true}
         style={{
-          paddingBottom: "40px", // Space for pagination dots
+          paddingBottom: "40px", 
         }}
       >
         {banners.map((item) => (

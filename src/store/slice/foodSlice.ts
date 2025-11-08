@@ -31,8 +31,17 @@ const foodSlice = createSlice({
       state.selectedRestaurant = undefined;
     },
 
-    sortByCategory: (state, action: PayloadAction<"asc" | "desc">) => {
-      state.filteredFoods = [...state.filteredFoods].sort((a, b) => (action.payload === "asc" ? a.category.localeCompare(b.category) : b.category.localeCompare(a.category)));
+    sortByPrice: (state, action: PayloadAction<"asc" | "desc">) => {
+      state.filteredFoods = [...state.filteredFoods].sort((a, b) => (action.payload === "asc" ? a.price - b.price : b.price - a.price));
+    },
+
+    filterByCategory: (state, action: PayloadAction<string>) => {
+      const category = action.payload;
+      if (category === "") {
+        state.filteredFoods = state.allFoods;
+      } else {
+        state.filteredFoods = state.allFoods.filter((item) => item.category === category);
+      }
     },
 
     getAllRestaurants: (state) => {
@@ -58,13 +67,6 @@ const foodSlice = createSlice({
   },
 });
 
-export const {
-  getAllFoods,
-  filterByPrice,
-  sortByCategory,
-  getAllRestaurants,
-  filterByRestaurant,
-  searchFoods, // 👈 add this
-} = foodSlice.actions;
+export const { getAllFoods, filterByPrice, sortByPrice, getAllRestaurants, filterByRestaurant, searchFoods, filterByCategory } = foodSlice.actions;
 
 export default foodSlice.reducer;

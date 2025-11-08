@@ -15,7 +15,6 @@ const Container = ({ heading, children }: Props) => {
         minWidth: { sm: "400px" },
         borderRadius: "8px",
         display: "inline-block",
-        // matching glow color for your theme (#f44336)
         boxShadow: "0 0.3px 0.5px rgba(244, 67, 54, 0.6)",
       }}
     >

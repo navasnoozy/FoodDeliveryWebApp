@@ -5,22 +5,16 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import type { RootState } from "../store/store";
 import { addToCart } from "../store/slice/cartSlice";
 import ItemCard from "../components/ItmeCard";
-
+import notification from "../components/Notification";
 
 const FoodPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const food = useSelector((state: RootState) =>
-    state.food.allFoods.find((item) => item.id === Number(id))
-  );
+  const food = useSelector((state: RootState) => state.food.allFoods.find((item) => item.id === Number(id)));
 
-  const relatedFoods = useSelector((state: RootState) =>
-    state.food.allFoods.filter(
-      (item) => item.restaurant.name === food?.restaurant.name && item.id !== Number(id)
-    )
-  );
+  const relatedFoods = useSelector((state: RootState) => state.food.allFoods.filter((item) => item.restaurant.name === food?.restaurant.name && item.id !== Number(id)));
 
   if (!food) {
     return (
@@ -34,6 +28,7 @@ const FoodPage = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(food));
+    notification(`${food.name} Added to Cart`);
   };
 
   return (
@@ -45,12 +40,7 @@ const FoodPage = () => {
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: 5 }}>
           <Card>
-            <CardMedia
-              component="img"
-              image={`/foodImages/${food.image}.png`}
-              alt={food.name}
-              sx={{ height: 400, objectFit: "cover" }}
-            />
+            <CardMedia component="img" image={`/foodImages/${food.image}.png`} alt={food.name} sx={{ height: 400, objectFit: "cover" }} />
           </Card>
         </Grid>
 
@@ -70,28 +60,15 @@ const FoodPage = () => {
               <Typography variant="h6" gutterBottom>
                 Restaurant
               </Typography>
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
-                onClick={() => navigate(`/restaurant/${food.restaurant.name}`)}
-              >
-                <img
-                  src={`/restaurants/${food.restaurant.image}.png`}
-                  alt={food.restaurant.name}
-                  style={{ width: 60, height: 60, borderRadius: "8px", objectFit: "cover" }}
-                />
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }} onClick={() => navigate(`/restaurant/${food.restaurant.name}`)}>
+                <img src={`/restaurants/${food.restaurant.image}.png`} alt={food.restaurant.name} style={{ width: 60, height: 60, borderRadius: "8px", objectFit: "cover" }} />
                 <Typography variant="h6" color="primary">
                   {food.restaurant.name}
                 </Typography>
               </Box>
             </Card>
 
-            <Button
-              variant="contained"
-              size="large"
-              fullWidth
-              onClick={handleAddToCart}
-              sx={{ py: 2 }}
-            >
+            <Button variant="contained" size="large" fullWidth onClick={handleAddToCart} sx={{ py: 2 }}>
               Add to Cart - ₹{food.price}
             </Button>
           </Box>
@@ -106,12 +83,7 @@ const FoodPage = () => {
           <Grid container spacing={2} sx={{ mt: 2 }}>
             {relatedFoods.slice(0, 4).map((item) => (
               <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                <ItemCard
-                  id={item.id}
-                  imageUrl={`/foodImages/${item.image}.png`}
-                  itemName={item.name}
-                  price={item.price}
-                />
+                <ItemCard id={item.id} imageUrl={`/foodImages/${item.image}.png`} itemName={item.name} price={item.price} />
               </Grid>
             ))}
           </Grid>

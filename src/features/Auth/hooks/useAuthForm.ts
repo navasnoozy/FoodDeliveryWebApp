@@ -1,4 +1,4 @@
-// hooks/useAuthForm.ts
+
 import { useState, type ChangeEvent } from "react";
 
 export const useAuthForm = (initialFields: Record<string, string>) => {
