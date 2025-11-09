@@ -1,11 +1,10 @@
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
+  Button,
   Dialog,
   DialogContent,
-  Typography,
-  Button,
-  Box,
+  Typography
 } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 interface OrderSuccessDialogProps {
   open: boolean;
