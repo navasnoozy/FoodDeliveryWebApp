@@ -27,44 +27,17 @@ const DeliveryForm = ({ open, onClose, onSubmit }: DeliveryFormProps) => {
     address: '',
     phone: '',
   });
-  const [errors, setErrors] = useState<Partial<DeliveryData>>({});
-
-  const validate = () => {
-    const newErrors: Partial<DeliveryData> = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.address.trim()) {
-      newErrors.address = 'Address is required';
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      onSubmit(formData);
-      setFormData({ name: '', address: '', phone: '' });
-    }
+    onSubmit(formData);
+    setFormData({ name: '', address: '', phone: '' });
   };
 
   const handleChange = (field: keyof DeliveryData) => (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFormData({ ...formData, [field]: e.target.value });
-    if (errors[field]) {
-      setErrors({ ...errors, [field]: undefined });
-    }
   };
 
   return (
@@ -77,20 +50,14 @@ const DeliveryForm = ({ open, onClose, onSubmit }: DeliveryFormProps) => {
               label="Full Name"
               value={formData.name}
               onChange={handleChange('name')}
-              error={!!errors.name}
-              helperText={errors.name}
               fullWidth
-              required
             />
             
             <TextField
               label="Delivery Address"
               value={formData.address}
               onChange={handleChange('address')}
-              error={!!errors.address}
-              helperText={errors.address}
               fullWidth
-              required
               multiline
               rows={3}
             />
@@ -99,10 +66,7 @@ const DeliveryForm = ({ open, onClose, onSubmit }: DeliveryFormProps) => {
               label="Phone Number"
               value={formData.phone}
               onChange={handleChange('phone')}
-              error={!!errors.phone}
-              helperText={errors.phone}
               fullWidth
-              required
               placeholder="1234567890"
             />
           </Stack>
