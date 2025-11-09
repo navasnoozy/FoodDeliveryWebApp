@@ -16,7 +16,12 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import type { RootState } from "../store/store";
-import { clearCart, decreaseQuantity, increaseQuantity, removeFromCart } from "../store/slice/cartSlice";
+import {
+  clearCart,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "../store/slice/cartSlice";
 import DeliveryForm, { type DeliveryData } from "../features/Checkout/DeliveryForm";
 import OrderSuccessDialog from "../features/Checkout/OrderSuccessDialog";
 
@@ -25,12 +30,12 @@ const CartPage = () => {
   const navigate = useNavigate();
   const { items, totalAmount, totalItems } = useSelector((state: RootState) => state.cart);
   const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
-  
+
   const [showDeliveryForm, setShowDeliveryForm] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   if (!isAuthenticated) {
-    navigate('/signin');
+    navigate("/signin");
     return null;
   }
 
@@ -39,18 +44,20 @@ const CartPage = () => {
   };
 
   const handleDeliverySubmit = (data: DeliveryData) => {
-    console.log('Order placed with delivery details:', data);
+    console.log("Order placed with delivery details:", data);
     setShowDeliveryForm(false);
     setShowSuccessDialog(true);
-    dispatch(clearCart());
+    // ❌ Don't clear the cart here
   };
 
   const handleSuccessClose = () => {
+    // ✅ Clear the cart only after dialog closes
+    dispatch(clearCart());
     setShowSuccessDialog(false);
-    navigate('/');
+    navigate("/");
   };
 
-  if (items.length === 0) {
+  if (items.length === 0 && !showSuccessDialog) {
     return (
       <Container sx={{ py: 8, textAlign: "center" }}>
         <ShoppingCartIcon sx={{ fontSize: 120, color: "grey.400", mb: 2 }} />
@@ -189,10 +196,7 @@ const CartPage = () => {
         onSubmit={handleDeliverySubmit}
       />
 
-      <OrderSuccessDialog
-        open={showSuccessDialog}
-        onClose={handleSuccessClose}
-      />
+      <OrderSuccessDialog open={showSuccessDialog} onClose={handleSuccessClose} />
     </>
   );
 };
