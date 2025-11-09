@@ -9,5 +9,6 @@ export interface FoodItemType {
   image: string;
   category: string;
   price: number;
+  rating:number;
   restaurant: RestaurantType;
 }

@@ -1,14 +1,6 @@
-import { Fab } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../store/slice/cartSlice";
-import type { RootState } from "../store/store";
-import notification from "./Notification";
+import AddToCart from "./AddToCart";
 
 interface Props {
   id?: number;
@@ -20,9 +12,6 @@ interface Props {
 
 const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
 
   const handleCardClick = () => {
     if (id && price) {
@@ -30,28 +19,6 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
     } else if (restaurantName) {
       navigate(`/restaurant/${restaurantName}`);
     }
-  };
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-
-    if (!isAuthenticated){
-      navigate('/signin')
-    }
-
-    e.stopPropagation();
-    if (id && price) {
-      dispatch(
-        addToCart({
-          id,
-          name: itemName || "",
-          image: imageUrl?.split("/").pop()?.replace(".png", "") || "",
-          price,
-          category: "",
-          restaurant: { name: restaurantName || "", image: "" },
-        } as any)
-      );
-    }
-   notification(`${itemName} Added to Cart`)
   };
 
   return (
@@ -64,24 +31,21 @@ const ItemCard = ({ id, imageUrl, itemName, price, restaurantName }: Props) => {
       }}
       onClick={handleCardClick}
     >
-      <CardMedia sx={{ borderRadius: 5 }} component="img" alt={itemName || restaurantName} height="140" image={imageUrl || "/foodImages/foodplaceholder.png"} />
+      <CardMedia sx={{ borderRadius: 5 }} component="img" alt={itemName || restaurantName} height="140" image={imageUrl || "/foodImages/foodplaceholder.jpg"} />
       <CardContent>
-        <Typography gutterBottom  sx={{ textWrap: "nowrap" }}>
+        <Typography gutterBottom sx={{ textWrap: "nowrap" }}>
           {itemName || restaurantName}
         </Typography>
       </CardContent>
-      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        {price && (
+
+      {price && (
+        <CardActions sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <Typography sx={{ color: "gray" }} variant="h6">
             ₹{price}
           </Typography>
-        )}
-        {price && (
-          <Fab color="secondary" aria-label="add" variant="extended" sx={{ textWrap: "nowrap", fontSize: "12px" }} onClick={handleAddToCart}>
-            Add To Cart
-          </Fab>
-        )}
-      </CardActions>
+          <AddToCart id={id} itemName={itemName} imageUrl={imageUrl} price={price} restaurantName={restaurantName} />
+        </CardActions>
+      )}
     </Card>
   );
 };

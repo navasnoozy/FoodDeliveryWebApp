@@ -11,13 +11,14 @@ export const HomePage = () => {
       <SwiperBanner />
       <SearchBar />
       <Box>
-        <Container maxWidth="xl" sx={{ py: 2 }}>
-          <Stack width="100%"   pr={7}  alignItems="end"><SortComponent /></Stack>
+        <Container maxWidth="xl" sx={{ py: 2, justifyItems: "center" }} className="//////">
+          <Stack width="100%" pr={7} alignItems="end">
+            <SortComponent />
+          </Stack>
           <Foodlist />
         </Container>
       </Box>
-       <ScrollingCategories />
+      <ScrollingCategories />
     </>
   );
 };
-

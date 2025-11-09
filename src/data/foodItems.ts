@@ -5,6 +5,7 @@ export const foodItems = [
     image: "puttuandkadalacurry",
     category: "Breakfast",
     price: 120,
+    rating: 4.5,
     restaurant: {
       id: 1,
       name: "Nadan Feast",
@@ -17,6 +18,7 @@ export const foodItems = [
     image: "appamwithstew",
     category: "Breakfast",
     price: 150,
+    rating: 4.7,
     restaurant: {
       id: 2,
       name: "Tharavadu Kitchen",
@@ -29,6 +31,7 @@ export const foodItems = [
     image: "karimeenpollichathu",
     category: "Non-Vegetarian",
     price: 320,
+    rating: 4.8,
     restaurant: {
       id: 3,
       name: "Meen By Chef Pillai",
@@ -41,6 +44,7 @@ export const foodItems = [
     image: "malabarparotta",
     category: "Bread",
     price: 80,
+    rating: 4.6,
     restaurant: {
       id: 4,
       name: "Rasoi Fort Kochi",
@@ -53,6 +57,7 @@ export const foodItems = [
     image: "keralaprawncurry",
     category: "Non-Vegetarian",
     price: 280,
+    rating: 4.7,
     restaurant: {
       id: 5,
       name: "Boche Toddy Pub",
@@ -65,6 +70,7 @@ export const foodItems = [
     image: "nadankozhivaruthathu",
     category: "Non-Vegetarian",
     price: 200,
+    rating: 4.5,
     restaurant: {
       id: 6,
       name: "Cochin Trader Bar",
@@ -77,6 +83,7 @@ export const foodItems = [
     image: "keralafishmolee",
     category: "Non-Vegetarian",
     price: 260,
+    rating: 4.6,
     restaurant: {
       id: 7,
       name: "Lila's Kitchen",
@@ -89,6 +96,7 @@ export const foodItems = [
     image: "thalasserybiryani",
     category: "Rice",
     price: 220,
+    rating: 4.8,
     restaurant: {
       id: 8,
       name: "Alif Biryani",
@@ -101,6 +109,7 @@ export const foodItems = [
     image: "onamsadhya",
     category: "Vegetarian Feast",
     price: 499,
+    rating: 4.9,
     restaurant: {
       id: 9,
       name: "Grand Entree",
@@ -113,6 +122,7 @@ export const foodItems = [
     image: "erissery",
     category: "Vegetarian",
     price: 110,
+    rating: 4.4,
     restaurant: {
       id: 10,
       name: "Gokul Oottupura",
@@ -125,6 +135,7 @@ export const foodItems = [
     image: "idiyappam",
     category: "Breakfast",
     price: 100,
+    rating: 4.3,
     restaurant: {
       id: 11,
       name: "Sree Krishna Inn",
@@ -137,6 +148,7 @@ export const foodItems = [
     image: "beeffry",
     category: "Non-Vegetarian",
     price: 240,
+    rating: 4.7,
     restaurant: {
       id: 12,
       name: "Hotel Taj",
@@ -149,6 +161,7 @@ export const foodItems = [
     image: "kappaandmeencurry",
     category: "Non-Vegetarian",
     price: 180,
+    rating: 4.6,
     restaurant: {
       id: 13,
       name: "United Coconut Restaurant",
@@ -161,6 +174,7 @@ export const foodItems = [
     image: "avial",
     category: "Vegetarian",
     price: 95,
+    rating: 4.5,
     restaurant: {
       id: 10,
       name: "Gokul Oottupura",
@@ -173,6 +187,7 @@ export const foodItems = [
     image: "paladapayasam",
     category: "Dessert",
     price: 60,
+    rating: 4.8,
     restaurant: {
       id: 1,
       name: "Nadan Feast",
@@ -185,6 +200,7 @@ export const foodItems = [
     image: "naadankozhicurry",
     category: "Non-Vegetarian",
     price: 210,
+    rating: 4.6,
     restaurant: {
       id: 14,
       name: "Tharavadu Restaurant",
@@ -197,6 +213,7 @@ export const foodItems = [
     image: "bananafritters",
     category: "Snack",
     price: 70,
+    rating: 4.2,
     restaurant: {
       id: 15,
       name: "Ente Thattukada",
@@ -209,6 +226,7 @@ export const foodItems = [
     image: "olan",
     category: "Vegetarian",
     price: 90,
+    rating: 4.4,
     restaurant: {
       id: 16,
       name: "Sadhya Bhavan",
@@ -221,6 +239,7 @@ export const foodItems = [
     image: "thoran",
     category: "Vegetarian",
     price: 85,
+    rating: 4.3,
     restaurant: {
       id: 16,
       name: "Sadhya Bhavan",
@@ -233,6 +252,466 @@ export const foodItems = [
     image: "keralabeefcutlet",
     category: "Snack",
     price: 40,
+    rating: 4.5,
+    restaurant: {
+      id: 17,
+      name: "Muthassi's Magic",
+      image: "muthassismagic",
+    },
+  },
+  // Additional items for Nadan Feast
+  {
+    id: 21,
+    name: "Ghee Roast Dosa",
+    image: "gheeroastdosa",
+    category: "Breakfast",
+    price: 90,
+    rating: 4.4,
+    restaurant: {
+      id: 1,
+      name: "Nadan Feast",
+      image: "nadanfeast",
+    },
+  },
+  {
+    id: 22,
+    name: "Kerala Mutton Stew",
+    image: "keralamuttonstew",
+    category: "Non-Vegetarian",
+    price: 280,
+    rating: 4.7,
+    restaurant: {
+      id: 1,
+      name: "Nadan Feast",
+      image: "nadanfeast",
+    },
+  },
+  // Additional items for Tharavadu Kitchen
+  {
+    id: 23,
+    name: "Kallappam",
+    image: "kallappam",
+    category: "Breakfast",
+    price: 130,
+    rating: 4.5,
+    restaurant: {
+      id: 2,
+      name: "Tharavadu Kitchen",
+      image: "tharavadukitchen",
+    },
+  },
+  {
+    id: 24,
+    name: "Ada Pradhaman",
+    image: "adapradhaman",
+    category: "Dessert",
+    price: 80,
+    rating: 4.6,
+    restaurant: {
+      id: 2,
+      name: "Tharavadu Kitchen",
+      image: "tharavadukitchen",
+    },
+  },
+  // Additional items for Meen By Chef Pillai
+  {
+    id: 25,
+    name: "Malabar Fish Fry",
+    image: "malabarfishfry",
+    category: "Non-Vegetarian",
+    price: 290,
+    rating: 4.7,
+    restaurant: {
+      id: 3,
+      name: "Meen By Chef Pillai",
+      image: "meenbychefpillai",
+    },
+  },
+  {
+    id: 26,
+    name: "Crab Roast",
+    image: "crabroast",
+    category: "Non-Vegetarian",
+    price: 380,
+    rating: 4.9,
+    restaurant: {
+      id: 3,
+      name: "Meen By Chef Pillai",
+      image: "meenbychefpillai",
+    },
+  },
+  // Additional items for Rasoi Fort Kochi
+  {
+    id: 27,
+    name: "Chicken Biriyani",
+    image: "chickenbiriyani",
+    category: "Rice",
+    price: 200,
+    rating: 4.5,
+    restaurant: {
+      id: 4,
+      name: "Rasoi Fort Kochi",
+      image: "rasoifortkochi",
+    },
+  },
+  {
+    id: 28,
+    name: "Paneer Butter Masala",
+    image: "paneerbuttermasala",
+    category: "Vegetarian",
+    price: 180,
+    rating: 4.4,
+    restaurant: {
+      id: 4,
+      name: "Rasoi Fort Kochi",
+      image: "rasoifortkochi",
+    },
+  },
+  // Additional items for Boche Toddy Pub
+  {
+    id: 29,
+    name: "Squid Fry",
+    image: "squidfry",
+    category: "Non-Vegetarian",
+    price: 250,
+    rating: 4.6,
+    restaurant: {
+      id: 5,
+      name: "Boche Toddy Pub",
+      image: "bochetoddypub",
+    },
+  },
+  {
+    id: 30,
+    name: "Kallumakkaya Nirachathu",
+    image: "kallumakkayanirachathu",
+    category: "Non-Vegetarian",
+    price: 220,
+    rating: 4.5,
+    restaurant: {
+      id: 5,
+      name: "Boche Toddy Pub",
+      image: "bochetoddypub",
+    },
+  },
+  // Additional items for Cochin Trader Bar
+  {
+    id: 31,
+    name: "Duck Roast",
+    image: "duckroast",
+    category: "Non-Vegetarian",
+    price: 310,
+    rating: 4.8,
+    restaurant: {
+      id: 6,
+      name: "Cochin Trader Bar",
+      image: "cochintraderbar",
+    },
+  },
+  {
+    id: 32,
+    name: "Kerala Parotta",
+    image: "keralaparotta",
+    category: "Bread",
+    price: 30,
+    rating: 4.3,
+    restaurant: {
+      id: 6,
+      name: "Cochin Trader Bar",
+      image: "cochintraderbar",
+    },
+  },
+  // Additional items for Lila's Kitchen
+  {
+    id: 33,
+    name: "Meen Peera",
+    image: "meenpeera",
+    category: "Non-Vegetarian",
+    price: 240,
+    rating: 4.5,
+    restaurant: {
+      id: 7,
+      name: "Lila's Kitchen",
+      image: "lilaskitchen",
+    },
+  },
+  {
+    id: 34,
+    name: "Vegetable Stew",
+    image: "vegetablestew",
+    category: "Vegetarian",
+    price: 140,
+    rating: 4.4,
+    restaurant: {
+      id: 7,
+      name: "Lila's Kitchen",
+      image: "lilaskitchen",
+    },
+  },
+  // Additional items for Alif Biryani
+  {
+    id: 35,
+    name: "Mutton Biryani",
+    image: "muttonbiryani",
+    category: "Rice",
+    price: 260,
+    rating: 4.7,
+    restaurant: {
+      id: 8,
+      name: "Alif Biryani",
+      image: "alifbiryani",
+    },
+  },
+  {
+    id: 36,
+    name: "Fried Chicken",
+    image: "friedchicken",
+    category: "Non-Vegetarian",
+    price: 180,
+    rating: 4.5,
+    restaurant: {
+      id: 8,
+      name: "Alif Biryani",
+      image: "alifbiryani",
+    },
+  },
+  // Additional items for Grand Entree
+  {
+    id: 37,
+    name: "Sambar",
+    image: "sambar",
+    category: "Vegetarian",
+    price: 80,
+    rating: 4.6,
+    restaurant: {
+      id: 9,
+      name: "Grand Entree",
+      image: "gokuloottupura",
+    },
+  },
+  {
+    id: 38,
+    name: "Pineapple Pachadi",
+    image: "pineapplepachadi",
+    category: "Vegetarian",
+    price: 70,
+    rating: 4.5,
+    restaurant: {
+      id: 9,
+      name: "Grand Entree",
+      image: "gokuloottupura",
+    },
+  },
+  // Additional items for Gokul Oottupura
+  {
+    id: 39,
+    name: "Parippu Curry",
+    image: "parippucurry",
+    category: "Vegetarian",
+    price: 75,
+    rating: 4.3,
+    restaurant: {
+      id: 10,
+      name: "Gokul Oottupura",
+      image: "gokuloottupura",
+    },
+  },
+  {
+    id: 40,
+    name: "Rasam",
+    image: "rasam",
+    category: "Vegetarian",
+    price: 65,
+    rating: 4.4,
+    restaurant: {
+      id: 10,
+      name: "Gokul Oottupura",
+      image: "gokuloottupura",
+    },
+  },
+  // Additional items for Sree Krishna Inn
+  {
+    id: 41,
+    name: "Dosa",
+    image: "dosa",
+    category: "Breakfast",
+    price: 60,
+    rating: 4.5,
+    restaurant: {
+      id: 11,
+      name: "Sree Krishna Inn",
+      image: "sreekrishnainn",
+    },
+  },
+  {
+    id: 42,
+    name: "Filter Coffee",
+    image: "filtercoffee",
+    category: "Beverage",
+    price: 30,
+    rating: 4.7,
+    restaurant: {
+      id: 11,
+      name: "Sree Krishna Inn",
+      image: "sreekrishnainn",
+    },
+  },
+  // Additional items for Hotel Taj
+  {
+    id: 43,
+    name: "Beef Roast",
+    image: "beefroast",
+    category: "Non-Vegetarian",
+    price: 270,
+    rating: 4.8,
+    restaurant: {
+      id: 12,
+      name: "Hotel Taj",
+      image: "hoteltaj",
+    },
+  },
+  {
+    id: 44,
+    name: "Porotta",
+    image: "porotta",
+    category: "Bread",
+    price: 25,
+    rating: 4.4,
+    restaurant: {
+      id: 12,
+      name: "Hotel Taj",
+      image: "hoteltaj",
+    },
+  },
+  // Additional items for United Coconut Restaurant
+  {
+    id: 45,
+    name: "Chemeen Curry",
+    image: "chemeencurry",
+    category: "Non-Vegetarian",
+    price: 260,
+    rating: 4.7,
+    restaurant: {
+      id: 13,
+      name: "United Coconut Restaurant",
+      image: "unitedcoconutrestaurant",
+    },
+  },
+  {
+    id: 46,
+    name: "Kappa Biryani",
+    image: "kappabiryani",
+    category: "Rice",
+    price: 150,
+    rating: 4.4,
+    restaurant: {
+      id: 13,
+      name: "United Coconut Restaurant",
+      image: "unitedcoconutrestaurant",
+    },
+  },
+  // Additional items for Tharavadu Restaurant
+  {
+    id: 47,
+    name: "Fish Fry",
+    image: "fishfry",
+    category: "Non-Vegetarian",
+    price: 230,
+    rating: 4.5,
+    restaurant: {
+      id: 14,
+      name: "Tharavadu Restaurant",
+      image: "tharavadurestaurant",
+    },
+  },
+  {
+    id: 48,
+    name: "Moru Curry",
+    image: "morucurry",
+    category: "Vegetarian",
+    price: 85,
+    rating: 4.3,
+    restaurant: {
+      id: 14,
+      name: "Tharavadu Restaurant",
+      image: "tharavadurestaurant",
+    },
+  },
+  // Additional items for Ente Thattukada
+  {
+    id: 49,
+    name: "Pazhampori",
+    image: "pazhampori",
+    category: "Snack",
+    price: 50,
+    rating: 4.4,
+    restaurant: {
+      id: 15,
+      name: "Ente Thattukada",
+      image: "entethattukada",
+    },
+  },
+  {
+    id: 50,
+    name: "Uzhunnu Vada",
+    image: "uzhunnuvada",
+    category: "Snack",
+    price: 45,
+    rating: 4.3,
+    restaurant: {
+      id: 15,
+      name: "Ente Thattukada",
+      image: "entethattukada",
+    },
+  },
+  // Additional items for Sadhya Bhavan
+  {
+    id: 51,
+    name: "Pulissery",
+    image: "pulissery",
+    category: "Vegetarian",
+    price: 95,
+    rating: 4.5,
+    restaurant: {
+      id: 16,
+      name: "Sadhya Bhavan",
+      image: "sadhyabhavan",
+    },
+  },
+  {
+    id: 52,
+    name: "Beetroot Pachadi",
+    image: "beetrootpachadi",
+    category: "Vegetarian",
+    price: 75,
+    rating: 4.4,
+    restaurant: {
+      id: 16,
+      name: "Sadhya Bhavan",
+      image: "sadhyabhavan",
+    },
+  },
+  // Additional items for Muthassi's Magic
+  {
+    id: 53,
+    name: "Chicken Cutlet",
+    image: "chickencutlet",
+    category: "Snack",
+    price: 35,
+    rating: 4.4,
+    restaurant: {
+      id: 17,
+      name: "Muthassi's Magic",
+      image: "muthassismagic",
+    },
+  },
+  {
+    id: 54,
+    name: "Sukhiyan",
+    image: "sukhiyan",
+    category: "Snack",
+    price: 30,
+    rating: 4.2,
     restaurant: {
       id: 17,
       name: "Muthassi's Magic",

@@ -1,22 +1,17 @@
-import { useParams, useNavigate } from "react-router";
-import { useSelector } from "react-redux";
-import { Box, Button, Card, CardMedia, Container, Grid, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box, Button, Card, CardMedia, Chip, Container, Grid, Rating, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import AddToCart from "../components/AddToCart";
 import type { RootState } from "../store/store";
-import ItemCard from "../components/ItmeCard";
-
 
 const RestaurantDetailsPage = () => {
   const { name } = useParams<{ name: string }>();
   const navigate = useNavigate();
 
-  const restaurant = useSelector((state: RootState) =>
-    state.food.restaurants.find((r) => r.name === name)
-  );
+  const restaurant = useSelector((state: RootState) => state.food.restaurants.find((r) => r.name === name));
 
-  const restaurantFoods = useSelector((state: RootState) =>
-    state.food.allFoods.filter((item) => item.restaurant.name === name)
-  );
+  const restaurantFoods = useSelector((state: RootState) => state.food.allFoods.filter((item) => item.restaurant.name === name));
 
   if (!restaurant) {
     return (
@@ -36,12 +31,7 @@ const RestaurantDetailsPage = () => {
 
       <Card sx={{ mb: 4 }}>
         <Box sx={{ position: "relative" }}>
-          <CardMedia
-            component="img"
-            image={`/restaurants/${restaurant.image}.png`}
-            alt={restaurant.name}
-            sx={{ height: 300, objectFit: "cover" }}
-          />
+          <CardMedia component="img" image={`/restaurants/${restaurant.image}.png`} alt={restaurant.name} sx={{ height: 300, objectFit: "cover" }} />
           <Box
             sx={{
               position: "absolute",
@@ -74,16 +64,108 @@ const RestaurantDetailsPage = () => {
         </Typography>
       ) : (
         <Grid container spacing={2}>
-          {restaurantFoods.map((item) => (
-            <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-              <ItemCard
-                id={item.id}
-                imageUrl={`/foodImages/${item.image}.png`}
-                itemName={item.name}
-                price={item.price}
-              />
-            </Grid>
-          ))}
+    {restaurantFoods.map((item) => (
+    <Grid
+      key={item.id}
+      container
+      size={12}
+      alignItems="center"
+      sx={{
+        borderBottom: "1px solid #eee",
+        py: 1.5,
+      }}
+    >
+      {/* Wrapper: Adjust layout for mobile vs desktop */}
+      <Grid
+        container
+        size={12}
+        alignItems="center"
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "row", md: "row" },
+          flexWrap: { xs: "wrap", md: "nowrap" },
+        }}
+      >
+        {/* === Name (Left) === */}
+        <Grid
+          size={{ xs: 6, md: 3 }}
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "flex-start", md: "flex-start" },
+            flexDirection: "column",
+          }}
+        >
+          <Typography
+            variant="subtitle1"
+            fontWeight="bold"
+            sx={{ lineHeight: 1.2 }}
+          >
+            {item.name}
+          </Typography>
+
+          {/* Rating below name on small screen only */}
+          <Box sx={{ display: { xs: "block", md: "none" }, mt: 0.8 }}>
+            <Rating
+              name={`rating-mobile-${item.id}`}
+              defaultValue={item.rating}
+              precision={0.5}
+              size="small"
+            />
+          </Box>
+        </Grid>
+
+        {/* === Price === */}
+        <Grid
+          size={{ xs: 6, md: 3 }}
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "flex-end", md: "center" },
+            alignItems: "center",
+          }}
+        >
+          <Chip
+            label={`₹${item.price}`}
+            color="success"
+            variant="outlined"
+            sx={{ px: 2 }}
+          />
+        </Grid>
+
+        {/* === Rating (visible only on desktop) === */}
+        <Grid
+          size={{ xs: 12, md: 3 }}
+          sx={{
+            display: { xs: "none", md: "flex" },
+            justifyContent: "center",
+          }}
+        >
+          <Rating
+            name={`rating-desktop-${item.id}`}
+            defaultValue={item.rating}
+            precision={0.5}
+          />
+        </Grid>
+
+        {/* === Add To Cart === */}
+        <Grid
+          size={{ xs: 12, md: 3 }}
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "flex-end", md: "flex-end" },
+            mt: { xs: 1, md: 0 },
+          }}
+        >
+          <AddToCart
+            id={item.id}
+            itemName={item.name}
+            imageUrl={item.image}
+            price={item.price}
+            restaurantName={restaurant.name}
+          />
+        </Grid>
+      </Grid>
+    </Grid>
+  ))}
         </Grid>
       )}
     </Container>
