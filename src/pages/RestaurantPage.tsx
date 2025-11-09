@@ -13,11 +13,14 @@ const RestaurantPage = () => {
       <Grid container spacing={2} maxWidth="xl">
         {restaurants.map((item: RestaurantType) => (
           <Grid key={item.name} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-            <ItemCard imageUrl={`/restaurants/${item.image}.png`} itemName={item.name} />
+            <ItemCard 
+              imageUrl={`/restaurants/${item.image}.png`} 
+              itemName={item.name}
+              restaurantName={item.name}
+            />
           </Grid>
         ))}
-      </Grid>{" "}
-      s
+      </Grid>
     </Container>
   );
 };
